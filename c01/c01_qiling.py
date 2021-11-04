@@ -47,7 +47,8 @@ def my_ReadFile(ql: Qiling, address: int, params):
     print(f'Mocked input = {data}')
 
     ql.mem.write(lpBuffer, data + b"\x00")
-    ql.mem.write(lpNumberOfBytesRead, ql.pack(len(data)+2)) # for some reason, just using len(data) isn't long enough
+    # for some reason, just using len(data) isn't long enough
+    ql.mem.write(lpNumberOfBytesRead, ql.pack(len(data)+2))
 
     return 1
 
